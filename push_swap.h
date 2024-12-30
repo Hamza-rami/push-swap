@@ -29,5 +29,7 @@ void pa(t_stack *b, t_stack *a);
 void rr(t_stack *a, t_stack *b);
 void rrr(t_stack *a, t_stack *b);
 void ss(t_stack *a, t_stack *b);
+char *ft_strjoin(char const *s1, char const *s2);
+char	*ft_strdup(const char *src);
 
 #endif
