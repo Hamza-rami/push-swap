@@ -1,7 +1,8 @@
 #include "push_swap.h"
 
 
-int *find_lis(int *arr, int size, int *lis_size) {
+int *find_lis_indices(int *arr, int size, int *lis_size) 
+{
     if (size == 0) {
         *lis_size = 0;
         return NULL;
@@ -27,21 +28,21 @@ int *find_lis(int *arr, int size, int *lis_size) {
 
     int max_index = 0;
     for (i = 1; i < size; i++) {
-        if (lis_length[i] > lis_length[max_index])
+        if (lis_length[i] > lis_length[max_index]) {
             max_index = i;
+        }
     }
 
     *lis_size = lis_length[max_index];
-
-    int *lis = malloc((*lis_size) * sizeof(int));
+    int *lis_indices = malloc((*lis_size) * sizeof(int));
     int idx = *lis_size - 1;
     while (max_index != -1) {
-        lis[idx--] = arr[max_index];
+        lis_indices[idx--] = max_index;
         max_index = prev[max_index];
     }
 
     free(lis_length);
     free(prev);
 
-    return lis;
+    return lis_indices;
 }

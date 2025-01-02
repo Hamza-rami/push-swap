@@ -35,5 +35,6 @@ char **ft_split(char const *s, char c);
 int	ft_atoi(char const *str);
 void parse_and_push(int argc, char const *argv[], t_stack *stack);
 int if_sorted(t_stack *stack);
+int *find_lis_indices(int *arr, int size, int *lis_size);
 
 #endif
