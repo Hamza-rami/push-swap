@@ -2,43 +2,42 @@
 
 void print_stack(t_stack *stack)
 {
-    t_node *current;
+	t_node *current;
 
-    if (!stack || !stack->top)
-    {
-        printf("Stack is empty.\n");
-        return;
-    }
+	if (!stack || !stack->top)
+	{
+		printf("Stack is empty.\n");
+		return;
+	}
 
-    current = stack->top;
-    printf("Stack elements: ");
-    while (current)
-    {
-        printf("%d ", current->data);
-        current = current->next;
-    }
-    printf("\n");
+	current = stack->top;
+	printf("Stack elements: ");
+	while (current)
+	{
+		printf("%d ", current->data);
+		current = current->next;
+	}
+	printf("\n");
 }
-int main() 
+
+int main(int argc, char const *argv[])
 {
-    int arr[] = {1, 3, 7, 5, 9, 4, 13};
-    int size = sizeof(arr) / sizeof(arr[0]);
-    int lis_size;
+	t_stack *stack;
+	int *arr;
+	int i;
 
-    int *lis_indices = find_lis_indices(arr, size, &lis_size);
+	stack = init_stack();
+	ft_join_arg(argc, argv);
+	parse_and_push(argc, argv, stack);
+	arr = find_lis_indices(stack);
+	print_stack(stack);
+	i = 0;
+		printf("%d", arr[i]);
+		printf("%d", arr[1]);
+		printf("%d", arr[2]);
 
-    printf("LIS Indices: ");
-    for (int i = 0; i < lis_size; i++) {
-        printf("%d ", lis_indices[i]);
-    }
-    printf("\n");
-
-    printf("LIS Elements: ");
-    for (int i = 0; i < lis_size; i++) {
-        printf("%d ", arr[lis_indices[i]]);
-    }
-    printf("\n");
-
-    free(lis_indices);
-    return 0;
+	// while (arr[i])
+	// {
+	// }
+	return 0;
 }
