@@ -16,3 +16,18 @@ int if_sorted(t_stack *stack)
     }
     return (1);
 }
+
+int get_size(t_stack *stack)
+{
+    t_node *current;
+    int size;
+
+    size = 0;
+    current = stack->top;
+    while (current)
+    {
+        size++;
+        current = current->next;
+    }
+    return (size);
+}

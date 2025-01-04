@@ -26,7 +26,7 @@ void rb(t_stack *b);
 void rrb(t_stack *b);
 void rra(t_stack *a);
 void pa(t_stack *a, t_stack *b);
-void pa(t_stack *b, t_stack *a);
+void pb(t_stack *b, t_stack *a);
 void rr(t_stack *a, t_stack *b);
 void rrr(t_stack *a, t_stack *b);
 void ss(t_stack *a, t_stack *b);
@@ -35,6 +35,8 @@ char **ft_split(char const *s, char c);
 int	ft_atoi(char const *str);
 void parse_and_push(int argc, char const *argv[], t_stack *stack);
 int if_sorted(t_stack *stack);
-int *find_lis_indices(t_stack *stack);
+int *find_lis_indices(t_stack *stack , int *index);
+int get_size(t_stack *stack);
+void *part_stack(t_stack *a, t_stack *b);
 
 #endif
