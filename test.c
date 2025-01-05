@@ -19,7 +19,10 @@ void print_stack(t_stack *stack)
 	}
 	printf("\n");
 }
+// void a() {
+// 	system("leaks a.out");
 
+// }
 int main(int argc, char const *argv[])
 {
 	t_stack *stack_a;
@@ -28,15 +31,18 @@ int main(int argc, char const *argv[])
 
 	stack_a = init_stack();
 	stack_b = init_stack();
-	ft_join_arg(argc, argv);
+	// atexit(a);
+	// ft_join_arg(argc, argv);
 	parse_and_push(argc, argv, stack_a);
+	// print_stack(stack_a);
 	part_stack(stack_a, stack_b);
+	push_b_to_a(stack_a, stack_b);
 	// push the elements of stack_b to stack_a ()
 	// 4 check with a => 1 ra 3 ra pb => (2 * ra <= stack_a_size / 2 then rra ra time else ra stack_a_size - 2 * ra + 1)
+	// printf("-----------------------------\n");
 	print_stack(stack_a);
-	printf("-----------------------------\n");
-	print_stack(stack_b);
-		// printf("%d", arr[0]);
-		// printf("%d", arr[1]);
+	// system("leaks a.out");
+	free_stack(stack_a);
+	free_stack(stack_b);
 	return 0;
 }

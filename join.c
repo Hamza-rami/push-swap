@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   join.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/04 12:05:42 by hrami             #+#    #+#             */
+/*   Updated: 2025/01/04 13:29:47 by hrami            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-static char	*ft_strcpy(char *dest, char const *src)
+static	char	*ft_strcpy(char *dest, char const *src)
 {
 	int	i;
 
@@ -64,7 +76,7 @@ char	*ft_strjoin(char *s1, char const *s2)
 	j = ft_strlen(s2);
 	arr = malloc(i + j + 1);
 	if (arr == NULL)
-		return (NULL);
+		return (free(s1), NULL);
 	ft_strcpy(arr, s1);
 	j = 0;
 	while (s2[j])
@@ -73,20 +85,22 @@ char	*ft_strjoin(char *s1, char const *s2)
 		j++;
 	}
 	arr[i + j] = '\0';
-    free(s1);
+	free(s1);
 	return (arr);
 }
 
-char *ft_join_arg(int argc, char const *argv[])
+char	*ft_join_arg(int argc, char const *argv[])
 {
-    char *str = ft_strdup("");
-    int i = 1;
+	char	*str;
+	int		i;
 
-    while (i < argc)
-    {
-        str = ft_strjoin(str, argv[i]);
-        str = ft_strjoin(str, " ");
-        i++;
-    }
-    return (str);
+	str = ft_strdup("");
+	i = 1;
+	while (i < argc)
+	{
+		str = ft_strjoin(str, argv[i]);
+		str = ft_strjoin(str, " ");
+		i++;
+	}
+	return (str);
 }

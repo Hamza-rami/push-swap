@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ra.c                                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/04 12:05:14 by hrami             #+#    #+#             */
+/*   Updated: 2025/01/04 12:05:15 by hrami            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void ra(t_stack *a)
@@ -8,7 +20,7 @@ void ra(t_stack *a)
     if (a->top && a->top->next)
     {
         tmp = a->top;
-        a->top =  a->top->next;
+        a->top = a->top->next;
         curren = a->top;
         while (curren->next)
         {
@@ -17,4 +29,5 @@ void ra(t_stack *a)
         curren->next = tmp;
         tmp->next = NULL;
     }
+    write(1, "ra\n", 3);
 }

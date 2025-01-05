@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rb.c                                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/04 12:05:11 by hrami             #+#    #+#             */
+/*   Updated: 2025/01/04 12:05:12 by hrami            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void rb(t_stack *b)
@@ -8,7 +20,7 @@ void rb(t_stack *b)
     if (b->top && b->top->next)
     {
         tmp = b->top;
-        b->top =  b->top->next;
+        b->top = b->top->next;
         curren = b->top;
         while (curren->next)
         {
@@ -17,4 +29,5 @@ void rb(t_stack *b)
         curren->next = tmp;
         tmp->next = NULL;
     }
+    write(1, "rb\n", 3);
 }

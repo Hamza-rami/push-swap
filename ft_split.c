@@ -1,5 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/04 12:05:49 by hrami             #+#    #+#             */
+/*   Updated: 2025/01/04 12:36:09 by hrami            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-static void	ft_free(char **arr, int i)
+
+static	void	ft_free(char **arr, int i)
 {
 	while (i > 0)
 	{
@@ -9,7 +22,7 @@ static void	ft_free(char **arr, int i)
 	free(arr);
 }
 
-static int	count_word(char const *str, char c)
+static	int	count_word(char const *str, char c)
 {
 	int	i;
 	int	count;
@@ -28,7 +41,7 @@ static int	count_word(char const *str, char c)
 	return (count);
 }
 
-static char	*ft_str_dup(char const *str, int size)
+static	char	*ft_str_dup(char const *str, int size)
 {
 	int		i;
 	char	*arr;
@@ -46,7 +59,7 @@ static char	*ft_str_dup(char const *str, int size)
 	return (arr);
 }
 
-static char	**extract_word(char const *s, char c, char **result)
+static	char	**extract_word(char const *s, char c, char **result)
 {
 	int	i;
 	int	len;
