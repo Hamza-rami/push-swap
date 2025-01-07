@@ -34,13 +34,17 @@ int main(int argc, char const *argv[])
 	// atexit(a);
 	// ft_join_arg(argc, argv);
 	parse_and_push(argc, argv, stack_a);
-	// print_stack(stack_a);
+	if (if_sorted(stack_a)) {
+	    free_stack(stack_a);
+	    free_stack(stack_b);
+	    exit(0); // Exit if the stack is already sorted
+	}
 	part_stack(stack_a, stack_b);
 	push_b_to_a(stack_a, stack_b);
-	// push the elements of stack_b to stack_a ()
+	print_stack(stack_a);
+	print_stack(stack_b);
 	// 4 check with a => 1 ra 3 ra pb => (2 * ra <= stack_a_size / 2 then rra ra time else ra stack_a_size - 2 * ra + 1)
 	// printf("-----------------------------\n");
-	print_stack(stack_a);
 	// system("leaks a.out");
 	free_stack(stack_a);
 	free_stack(stack_b);

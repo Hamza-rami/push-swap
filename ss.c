@@ -6,7 +6,7 @@
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 11:50:08 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/04 11:50:09 by hrami            ###   ########.fr       */
+/*   Updated: 2025/01/07 12:34:48 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ void help_sb(t_stack *b)
 void ss(t_stack *a, t_stack *b)
 {
     help_sa(a);
-    help_sa(b);
+    help_sb(b);
     write(1, "ss\n", 3);
 }

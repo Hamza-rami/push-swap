@@ -6,7 +6,7 @@
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 12:05:21 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/04 13:22:43 by hrami            ###   ########.fr       */
+/*   Updated: 2025/01/07 12:53:16 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,15 @@ typedef struct s_stack
     t_node *top;
 } t_stack;
 
+#define min(a, b) ((a) < (b) ? (a) : (b))
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <limits.h>
 
 t_stack *init_stack(void);
+void add_back(t_stack *stack, int value);
 void push(t_stack *stack, int value);
 int pop(t_stack *stack);
 int is_empty(t_stack *stack);
@@ -54,5 +58,4 @@ int *find_lis_indices(t_stack *stack, int *index);
 int get_size(t_stack *stack);
 void *part_stack(t_stack *a, t_stack *b);
 void push_b_to_a(t_stack *a, t_stack *b);
-
 #endif

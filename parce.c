@@ -6,7 +6,7 @@
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 12:05:30 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/04 13:27:54 by hrami            ###   ########.fr       */
+/*   Updated: 2025/01/05 15:57:38 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	is_valid_number(char **split, t_stack *stack)
 	i = 0;
 	while (split[i])
 	{
-		push(stack, ft_atoi(split[i]));
+		add_back(stack, ft_atoi(split[i]));
 		free(split[i]);
 		i++;
 	}
