@@ -1,131 +1,65 @@
-// #include "push_swap.h"
-
-// int calcul(t_stack *a, t_stack *b)
-// {
-//     t_node *cur;
-//     cur = a->top;
-// }
-#include <stdio.h>
-#include <stdlib.h>
-
-typedef struct s_node
+#include "push_swap.h"
+int get_index_a(t_stack *stack_a, int b_value)
 {
-    int data;
-    struct s_node *next;
-} t_node;
-
-typedef struct s_stack
-{
-    t_node *top;
-} t_stack;
-
-typedef struct s_move
-{
-    int b_index;  // index of element in stack B
-    int a_index;  // index of element in stack A
-} t_move;
-
-// Function to create a new node
-t_node *new_node(int data)
-{
-    t_node *node = malloc(sizeof(t_node));
-    if (!node)
-        return NULL;
-    node->data = data;
-    node->next = NULL;
-    return node;
-}
-
-// Function to add a node to the top of the stack
-void push(t_stack *stack, int data)
-{
-    t_node *node = new_node(data);
-    if (!node)
-        return;
-    node->next = stack->top;
-    stack->top = node;
-}
-
-// Function to find the index of an element in stack A
-int get_index_a(t_stack *stack, t_node *node)
-{
+    t_node *current;
     int index = 0;
-    t_node *current = stack->top;
+    int small_index = 0;
+    int largest_index = 0;
+    int small_value = current->data;
+    int largest_value = current->data;
+
     while (current)
     {
-        if (current == node)
-            return index;
+        if (current->data < small_value)
+        {
+            small_value = current->data;
+            small_index = index;
+        }
+        if (current->data > largest_value)
+        {
+            largest_value = current->data;
+            largest_index = index;
+        }
+        if(current->data < b_value && current->next->data > b_value)
+            return(index);
         current = current->next;
         index++;
     }
-    return -1;  // If the node is not found
+    if (b_value < small_value)
+        return small_index;
+    if (b_value > largest_value)
+        return largest_index + 1;
 }
 
-// Function to find the target index for an element in stack B in stack A
-int get_target_index(t_stack *stack_a, int b_value)
+void calculate_indices(t_stack *stack_a, t_stack *stack_b, t_calc **calc_list)
 {
-    t_node *current = stack_a->top;
-    t_node *prev = NULL;
-    while (current)
+    t_node *cur_b;
+    int index_b;
+    t_calc *new_calc;
+    t_calc *temp;
+
+    cur_b = stack_b->top;
+    index_b = 0;
+    while (cur_b)
     {
-        if (prev && prev->data < b_value && current->data > b_value)
-            return get_index_a(stack_a, current);  // Found the right spot
-        prev = current;
-        current = current->next;
+        new_calc = malloc(sizeof(t_calc));
+        if(!new_calc)
+            return;
+        new_calc->index_b = index_b;
+        new_calc->index_b = get_index_a(stack_a, cur_b->data);
+        new_calc->min_move = -1;
+        new_calc->next = NULL;
+        
+        if(*calc_list == NULL)
+            *calc_list = new_calc;
+        else
+        {
+            temp = *calc_list;
+            while (temp->next)
+                temp = temp->next;
+            temp->next = new_calc;
+        }
+        cur_b = cur_b->next;
+        index_b++;
     }
-    // Handle wrap-around case (insert at the beginning)
-    return 0;  // Before the smallest element in stack A
-}
-
-// Function to backup indices of elements in stack B
-void backup_indices(t_stack *stack_a, t_stack *stack_b, t_move *moves)
-{
-    t_node *current_b = stack_b->top;
-    int b_index = 0;
-
-    // Traverse stack B and calculate target indices in stack A
-    while (current_b)
-    {
-        moves[b_index].b_index = b_index;
-        moves[b_index].a_index = get_target_index(stack_a, current_b->data);
-        current_b = current_b->next;
-        b_index++;
-    }
-}
-
-// Helper function to print the moves
-void print_moves(t_move *moves, int size)
-{
-    for (int i = 0; i < size; i++)
-    {
-        printf("B Index: %d, A Index: %d\n", moves[i].b_index, moves[i].a_index);
-    }
-}
-
-int main()
-{
-    t_stack stack_a = {NULL};
-    t_stack stack_b = {NULL};
-    
-    // Example stack A: [15 → 1 → 5 → 8 → 10 → (back to 15)]
-    push(&stack_a, 10);
-    push(&stack_a, 8);
-    push(&stack_a, 5);
-    push(&stack_a, 1);
-    push(&stack_a, 15);
-    
-    // Example stack B: [7 → 0 → 12]
-    push(&stack_b, 12);
-    push(&stack_b, 0);
-    push(&stack_b, 7);
-
-    // Backup indices and calculate target positions
-    int stack_b_size = 3;  // Number of elements in stack B
-    t_move moves[stack_b_size];
-    backup_indices(&stack_a, &stack_b, moves);
-
-    // Print the backed-up indices and target positions
-    print_moves(moves, stack_b_size);
-
-    return 0;
 }

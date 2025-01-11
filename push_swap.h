@@ -6,7 +6,7 @@
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 12:05:21 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/09 16:56:00 by hrami            ###   ########.fr       */
+/*   Updated: 2025/01/10 12:14:09 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,14 @@ typedef struct s_stack
 {
     t_node *top;
 } t_stack;
+
+typedef struct s_calc
+{
+    int index_a;
+    int index_b;
+    int min_move;
+    struct s_calc *next;
+} t_calc;
 
 
 
