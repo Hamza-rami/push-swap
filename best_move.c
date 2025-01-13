@@ -1,65 +1,110 @@
 #include "push_swap.h"
-int get_index_a(t_stack *stack_a, int b_value)
-{
-    t_node *current;
-    int index = 0;
-    int small_index = 0;
-    int largest_index = 0;
-    int small_value = current->data;
-    int largest_value = current->data;
 
-    while (current)
-    {
-        if (current->data < small_value)
-        {
-            small_value = current->data;
-            small_index = index;
-        }
-        if (current->data > largest_value)
-        {
-            largest_value = current->data;
-            largest_index = index;
-        }
-        if(current->data < b_value && current->next->data > b_value)
-            return(index);
-        current = current->next;
-        index++;
-    }
-    if (b_value < small_value)
-        return small_index;
-    if (b_value > largest_value)
-        return largest_index + 1;
+void f_two_up(t_stack *a, t_stack *b, t_calc *calc)
+{
+	int len_a = calc->index_a;
+	int len_b = calc->index_b;
+
+	while (len_a > 0 && len_b > 0)
+	{
+		rr(a, b);
+		len_a--;
+		len_b--;
+	}
+	while (len_a > 0)
+	{
+		ra(a);
+		len_a--;
+	}
+	printf("her\n");
+	while (len_b > 0)
+	{
+		rb(b);
+		len_b--;
+	}
+	pa(a, b);
 }
 
-void calculate_indices(t_stack *stack_a, t_stack *stack_b, t_calc **calc_list)
+void	f_two_down(t_stack *a, t_stack *b, t_calc *calc)
 {
-    t_node *cur_b;
-    int index_b;
-    t_calc *new_calc;
-    t_calc *temp;
+	int len_a = calc->index_a;
+	int len_b = calc->index_b;
+	int size_a = get_size(a);
+	int size_b = get_size(b);
+	while (len_a < size_a && len_b < size_b)
+	{
+		rrr(a, b);
+		len_a++;
+		len_b++; 
+	}
+	while (len_a > size_a)
+	{
+		rra(a);
+		len_a++;
+	}
+	while (len_b > size_b)
+	{
+		rrb(b);
+		len_b++;
+	}
+	pa(a, b);
+}
 
-    cur_b = stack_b->top;
-    index_b = 0;
-    while (cur_b)
-    {
-        new_calc = malloc(sizeof(t_calc));
-        if(!new_calc)
-            return;
-        new_calc->index_b = index_b;
-        new_calc->index_b = get_index_a(stack_a, cur_b->data);
-        new_calc->min_move = -1;
-        new_calc->next = NULL;
-        
-        if(*calc_list == NULL)
-            *calc_list = new_calc;
-        else
-        {
-            temp = *calc_list;
-            while (temp->next)
-                temp = temp->next;
-            temp->next = new_calc;
-        }
-        cur_b = cur_b->next;
-        index_b++;
-    }
+void f_up_down(t_stack *a, t_stack *b, t_calc *calc)
+{
+	int len_a = calc->index_a;
+	int len_b = calc->index_b;
+	int size_b = get_size(b);
+
+	while (len_a > 0)
+	{
+		ra(a);
+		len_a--;		
+	}
+	while (len_b > size_b)
+	{
+		rrb(b);
+		len_b++;
+	}
+	pa(a, b);
+}
+
+void f_down_up(t_stack *a, t_stack *b, t_calc *calc)
+{
+	int len_a = calc->index_a;
+	int len_b = calc->index_b;
+	int size_a = get_size(a);
+
+	while (len_b > 0)
+	{
+		ra(b);
+		len_b--;		
+	}
+	while (len_a > size_a)
+	{
+		rra(a);
+		len_a++;
+	}
+	pa(a, b);
+}
+
+void best_fun(t_stack *a, t_stack *b, t_calc *calc)
+{
+	int two_up;
+	int two_down;
+	int up_down;
+	int down_up;
+
+	two_up = MAX(calc->index_a, calc->index_b);
+	two_down = MAX(get_size(a) - calc->index_a, get_size(b) - calc->index_b);
+	up_down = calc->index_a + get_size(b) - calc->index_b;
+	down_up = get_size(a) - calc->index_a + calc->index_b;
+	if (two_up == calc->min_move)
+		f_two_up(a, b, calc);
+	else if(two_down == calc->min_move)
+		f_two_down(a, b, calc);
+	else if(up_down == calc->min_move)
+		f_up_down(a, b, calc);
+	else
+		f_down_up(a, b, calc);
 }

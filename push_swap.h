@@ -6,7 +6,7 @@
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 12:05:21 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/10 12:14:09 by hrami            ###   ########.fr       */
+/*   Updated: 2025/01/13 10:17:05 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ typedef struct s_calc
     struct s_calc *next;
 } t_calc;
 
-
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -72,6 +73,9 @@ int get_size(t_stack *stack);
 void *part_stack(t_stack *a, t_stack *b);
 void sort_three(t_stack *a);
 void sort_than_5(t_stack *a, t_stack *b);
-void push_b_to_a_circular(t_stack *a, t_stack *b);
+void min_move(t_stack *a, t_stack *b, t_calc *calc_list);
+void calculate_indices(t_stack *stack_a, t_stack *stack_b, t_calc **calc_list);
+void best_fun(t_stack *a, t_stack *b, t_calc *calc);
+t_calc *find_min_move(t_calc *calc_list);
 
 #endif
