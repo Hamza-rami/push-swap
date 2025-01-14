@@ -6,7 +6,7 @@
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 12:05:27 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/08 14:44:37 by hrami            ###   ########.fr       */
+/*   Updated: 2025/01/13 12:36:43 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	*part_stack(t_stack *a, t_stack *b)
 		else
 			pb(b, a);
 		if (size_index == get_size(a))
-			break;
+			break ;
 		my_index++;
 	}
 	free(arr);

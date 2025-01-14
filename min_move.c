@@ -1,5 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   min_move.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/13 12:34:14 by hrami             #+#    #+#             */
+/*   Updated: 2025/01/13 12:34:30 by hrami            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-int get_index_a(t_stack *stack_a, int b_value)
+
+int	get_index_a(t_stack *stack_a, int b_value)
 {
 	t_node *current = stack_a->top;
 	int index = 0;
@@ -31,8 +44,9 @@ int get_index_a(t_stack *stack_a, int b_value)
 	return -1;
 }
 
-void calculate_indices(t_stack *stack_a, t_stack *stack_b, t_calc **calc_list)
+t_calc *calculate_indices(t_stack *stack_a, t_stack *stack_b)
 {
+	t_calc *calc_list = NULL;
 	t_node *cur_b;
 	int index_b;
 	t_calc *new_calc;
@@ -44,16 +58,16 @@ void calculate_indices(t_stack *stack_a, t_stack *stack_b, t_calc **calc_list)
 	{
 		new_calc = malloc(sizeof(t_calc));
 		if (!new_calc)
-			return;
+			return(NULL);
 		new_calc->index_b = index_b;
 		new_calc->index_a = get_index_a(stack_a, cur_b->data);
 		new_calc->min_move = -1;
 		new_calc->next = NULL;
-		if (*calc_list == NULL)
-			*calc_list = new_calc;
+		if (calc_list == NULL)
+			calc_list = new_calc;
 		else
 		{
-			temp = *calc_list;
+			temp = calc_list;
 			while (temp->next)
 				temp = temp->next;
 			temp->next = new_calc;
@@ -61,32 +75,25 @@ void calculate_indices(t_stack *stack_a, t_stack *stack_b, t_calc **calc_list)
 		cur_b = cur_b->next;
 		index_b++;
 	}
+	return (calc_list);
 }
 
 
 void min_move(t_stack *a, t_stack *b, t_calc *calc_list)
 {
 	t_calc *cur;
-	int size_a;
-	int size_b;
-	int index_a;
-	int index_b;
 	int two_up;
 	int two_down;
 	int up_down;
 	int down_up;
 
 	cur = calc_list;
-	size_a = get_size(a);
-	size_b = get_size(b);
 	while (cur)
 	{
-		index_a = cur->index_a;
-		index_b = cur->index_b;
-		two_up = MAX(index_a, index_b);
-		two_down = MAX(size_a - index_a, size_b - index_b);
-		up_down = index_a + size_b - index_b;
-		down_up = size_a - index_a + index_b;
+		two_up = MAX(cur->index_a, cur->index_b);
+		two_down = MAX(get_size(a) - cur->index_a, get_size(b) - cur->index_b);
+		up_down = cur->index_a + get_size(b) - cur->index_b;
+		down_up = get_size(a) - cur->index_a + cur->index_b;
 		cur->min_move = MIN(two_up, MIN(two_down, MIN(up_down, down_up)));
 		cur = cur->next;
 	}
@@ -109,4 +116,3 @@ t_calc *find_min_move(t_calc *calc_list)
 	}
 	return (min_move_node);
 }
-

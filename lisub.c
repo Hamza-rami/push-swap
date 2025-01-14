@@ -6,32 +6,11 @@
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 12:05:37 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/04 12:26:14 by hrami            ###   ########.fr       */
+/*   Updated: 2025/01/13 12:30:17 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	*ft_change(t_stack *stack, int size)
-{
-	int		*array;
-	t_node	*current;
-	int		i;
-
-	if (size == 0)
-		return (NULL);
-	array = malloc(size * sizeof(int));
-	if (!array)
-		return (NULL);
-	current = stack->top;
-	i = 0;
-	while (current)
-	{
-		array[i++] = current->data;
-		current = current->next;
-	}
-	return (array);
-}
 
 void	init_arrays(int *lis_length, int *prev, int size)
 {

@@ -6,7 +6,7 @@
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 11:50:02 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/05 15:23:16 by hrami            ###   ########.fr       */
+/*   Updated: 2025/01/13 12:51:18 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	push(t_stack *stack, int value)
 
 int	pop(t_stack *stack)
 {
-	int	value;
+	int		value;
 	t_node	*tmp;
 
 	tmp = stack->top;

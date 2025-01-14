@@ -6,16 +6,16 @@
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 12:05:24 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/04 12:05:25 by hrami            ###   ########.fr       */
+/*   Updated: 2025/01/13 12:37:17 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void pb(t_stack *b, t_stack *a)
+void	pb(t_stack *b, t_stack *a)
 {
-    if (is_empty(a))
-        return;
-    push(b, pop(a));
-    write(1, "pb\n", 3);
+	if (is_empty(a))
+		return ;
+	push(b, pop(a));
+	write(1, "pb\n", 3);
 }

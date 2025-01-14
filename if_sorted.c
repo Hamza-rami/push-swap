@@ -6,7 +6,7 @@
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 12:05:46 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/07 14:58:29 by hrami            ###   ########.fr       */
+/*   Updated: 2025/01/13 12:30:26 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,25 +43,46 @@ int	get_size(t_stack *stack)
 	return (size);
 }
 
-void add_back(t_stack *stack, int value)
+void	add_back(t_stack *stack, int value)
 {
-	t_node *temp;
-	t_node *new_node;
-	
+	t_node	*temp;
+	t_node	*new_node;
+
 	new_node = malloc(sizeof(t_node));
-    if (!new_node)
-        return;
-    new_node->data = value;
-    new_node->next = NULL;
+	if (!new_node)
+		return ;
+	new_node->data = value;
+	new_node->next = NULL;
 	if (!stack->top)
-    {
-    stack->top = new_node;
-    return;
-    }
+	{
+		stack->top = new_node;
+		return ;
+	}
 	temp = stack->top;
 	while (temp->next)
 	{
 		temp = temp->next;
 	}
 	temp->next = new_node;
+}
+
+int	*ft_change(t_stack *stack, int size)
+{
+	int		*array;
+	t_node	*current;
+	int		i;
+
+	if (size == 0)
+		return (NULL);
+	array = malloc(size * sizeof(int));
+	if (!array)
+		return (NULL);
+	current = stack->top;
+	i = 0;
+	while (current)
+	{
+		array[i++] = current->data;
+		current = current->next;
+	}
+	return (array);
 }
