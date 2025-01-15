@@ -6,11 +6,25 @@
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 12:05:27 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/13 12:36:43 by hrami            ###   ########.fr       */
+/*   Updated: 2025/01/14 10:45:45 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	min(int a, int b)
+{
+	if (a < b)
+		return (a);
+	return (b);
+}
+
+int	max(int a, int b)
+{
+	if (a > b)
+		return (a);
+	return (b);
+}
 
 int	if_in(int *arr, int index, int size)
 {

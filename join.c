@@ -6,7 +6,7 @@
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 12:05:42 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/05 16:01:42 by hrami            ###   ########.fr       */
+/*   Updated: 2025/01/14 12:50:15 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ char	*ft_strjoin(char *s1, char const *s2)
 	return (arr);
 }
 
-char	*ft_join_arg(int argc, char const *argv[])
+char	*ft_join_arg(int argc, char *argv[])
 {
 	char	*str;
 	int		i;

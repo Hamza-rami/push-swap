@@ -6,7 +6,7 @@
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 12:05:37 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/13 12:30:17 by hrami            ###   ########.fr       */
+/*   Updated: 2025/01/14 10:53:53 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,24 +82,22 @@ int	*build_lis_indices(int *prev, int *lis_length, int max_index)
 
 int	*find_lis_indices(t_stack *stack, int *index)
 {
-	int	size;
 	int	*arr;
 	int	*lis_length;
 	int	*prev;
 	int	max_index;
 	int	*lis_indices;
 
-	size = get_size(stack);
-	if (size == 0)
+	if (get_size(stack) == 0)
 		return (NULL);
-	arr = ft_change(stack, size);
-	lis_length = malloc(size * sizeof(int));
-	prev = malloc(size * sizeof(int));
+	arr = ft_change(stack, get_size(stack));
+	lis_length = malloc(get_size(stack) * sizeof(int));
+	prev = malloc(get_size(stack) * sizeof(int));
 	if (!lis_length || !prev || !arr)
 		return (free(arr), free(lis_length), free(prev), NULL);
-	init_arrays(lis_length, prev, size);
-	find_lis_length(arr, lis_length, prev, size);
-	max_index = get_max_index(lis_length, size);
+	init_arrays(lis_length, prev, get_size(stack));
+	find_lis_length(arr, lis_length, prev, get_size(stack));
+	max_index = get_max_index(lis_length, get_size(stack));
 	*index = lis_length[max_index];
 	lis_indices = build_lis_indices(prev, lis_length, max_index);
 	free(arr);

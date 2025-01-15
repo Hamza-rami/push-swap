@@ -6,7 +6,7 @@
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 12:05:21 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/13 12:44:08 by hrami            ###   ########.fr       */
+/*   Updated: 2025/01/14 12:49:40 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,13 @@ typedef struct s_calc
 	struct s_calc	*next;
 }	t_calc;
 
-#define MIN(a, b) ((a) < (b) ? (a) : (b))
-#define MAX(a, b) ((a) > (b) ? (a) : (b))
+typedef struct s_extremes
+{
+	int	smallest;
+	int	small_index;
+	int	largest;
+	int	large_index;
+}	t_extremes;
 
 t_stack	*init_stack(void);
 void	add_back(t_stack *stack, int value);
@@ -57,10 +62,10 @@ void	pb(t_stack *b, t_stack *a);
 void	rr(t_stack *a, t_stack *b);
 void	rrr(t_stack *a, t_stack *b);
 void	ss(t_stack *a, t_stack *b);
-char	*ft_join_arg(int argc, char const *argv[]);
+char	*ft_join_arg(int argc, char *argv[]);
 char	**ft_split(char const *s, char c);
 int		ft_atoi(char const *str);
-void	parse_and_push(int argc, char const *argv[], t_stack *stack);
+void	parse_and_push(int argc, char *argv[], t_stack *stack);
 int		if_sorted(t_stack *stack);
 int		*ft_change(t_stack *stack, int size);
 int		*find_lis_indices(t_stack *stack, int *index);
@@ -68,6 +73,8 @@ int		get_size(t_stack *stack);
 void	*part_stack(t_stack *a, t_stack *b);
 void	sort_three(t_stack *a);
 void	sort_than_5(t_stack *a, t_stack *b);
+int		min(int a, int b);
+int		max(int a, int b);
 int		check_min_index(t_node *a);
 void	min_move(t_stack *a, t_stack *b, t_calc *calc_list);
 t_calc	*calculate_indices(t_stack *stack_a, t_stack *stack_b);

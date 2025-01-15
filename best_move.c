@@ -6,7 +6,7 @@
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 12:23:47 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/13 12:26:10 by hrami            ###   ########.fr       */
+/*   Updated: 2025/01/14 10:47:58 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,8 @@ void	best_fun(t_stack *a, t_stack *b, t_calc *calc)
 	int	up_down;
 	int	down_up;
 
-	two_up = MAX(calc->index_a, calc->index_b);
-	two_down = MAX(get_size(a) - calc->index_a, get_size(b) - calc->index_b);
+	two_up = max(calc->index_a, calc->index_b);
+	two_down = max(get_size(a) - calc->index_a, get_size(b) - calc->index_b);
 	up_down = calc->index_a + get_size(b) - calc->index_b;
 	down_up = get_size(a) - calc->index_a + calc->index_b;
 	if (two_up == calc->min_move)

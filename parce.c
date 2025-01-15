@@ -6,11 +6,34 @@
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 12:05:30 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/05 15:57:38 by hrami            ###   ########.fr       */
+/*   Updated: 2025/01/14 12:51:39 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	is_duplicate(t_stack *stack)
+{
+	t_node	*first;
+	t_node	*second;
+
+	first = stack->top;
+	while (first)
+	{
+		second = first->next;
+		while (second)
+		{
+			if (first->data == second->data)
+			{
+				free_stack(stack);
+				write(2, "Error\n", 6);
+				exit(0);
+			}
+			second = second->next;
+		}
+		first = first->next;
+	}
+}
 
 void	free_stack(t_stack *stack)
 {
@@ -30,8 +53,6 @@ void	free_stack(t_stack *stack)
 int	is_valid_number(char **split, t_stack *stack)
 {
 	int		i;
-	t_node	*first;
-	t_node	*second;
 
 	i = 0;
 	while (split[i])
@@ -41,30 +62,41 @@ int	is_valid_number(char **split, t_stack *stack)
 		i++;
 	}
 	free(split);
-	first = stack->top;
-	while (first)
-	{
-		second = first->next;
-		while (second)
-		{
-			if (first->data == second->data)
-			{
-				free_stack(stack);
-				write(2, "Error\n", 6);
-				exit(0);
-			}
-			second = second->next;
-		}
-		first = first->next;
-	}
+	is_duplicate(stack);
 	return (0);
 }
 
-void	parse_and_push(int argc, char const *argv[], t_stack *stack)
+void	check_isemty(char **argv)
+{
+	int		i;
+	int		j;
+
+	i = 1;
+	while (argv[i])
+	{
+		if (argv[i][0] == '\0')
+		{
+			write(2, "Error\n", 6);
+			exit (1);
+		}
+		j = 0;
+		while (argv[i][j] == ' ')
+			j++;
+		if (argv[i][j] == '\0')
+		{
+			write(2, "Error\n", 6);
+			exit (1);
+		}
+		i++;
+	}
+}
+
+void	parse_and_push(int argc, char *argv[], t_stack *stack)
 {
 	char	*joined;
 	char	**split;
 
+	check_isemty(argv);
 	joined = ft_join_arg(argc, argv);
 	split = ft_split(joined, ' ');
 	free(joined);

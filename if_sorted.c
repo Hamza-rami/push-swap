@@ -6,7 +6,7 @@
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 12:05:46 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/13 12:30:26 by hrami            ###   ########.fr       */
+/*   Updated: 2025/01/14 10:21:02 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,25 @@ int	*ft_change(t_stack *stack, int size)
 		current = current->next;
 	}
 	return (array);
+}
+
+t_calc	*find_min_move(t_calc *calc_list)
+{
+	t_calc	*cur;
+	t_calc	*min_move_node;
+	int		min_move;
+
+	cur = calc_list;
+	min_move_node = cur;
+	min_move = cur->min_move;
+	while (cur)
+	{
+		if (cur->min_move < min_move)
+		{
+			min_move = cur->min_move;
+			min_move_node = cur;
+		}
+		cur = cur->next;
+	}
+	return (min_move_node);
 }
