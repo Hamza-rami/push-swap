@@ -6,7 +6,7 @@
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 12:05:53 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/14 12:21:08 by hrami            ###   ########.fr       */
+/*   Updated: 2025/01/17 15:24:54 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ static	void	ft_skip(char const *str, int *s, int *i)
 			*s *= -1;
 		(*i)++;
 	}
+	if (str[*i] == '\0')
+	{
+		write(2, "Error\n", 6);
+		exit(1);
+	}		
 }
 
 int	ft_atoi(char const *str)

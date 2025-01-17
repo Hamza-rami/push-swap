@@ -6,7 +6,7 @@
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 12:34:14 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/14 10:50:40 by hrami            ###   ########.fr       */
+/*   Updated: 2025/01/17 15:06:54 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ t_calc	*calculate_indices(t_stack *stack_a, t_stack *stack_b)
 	t_node	*cur_b;
 	int		index_b;
 	t_calc	*new_calc;
-	t_calc	*temp;
 
 	cur_b = stack_b->top;
 	calc_list = NULL;

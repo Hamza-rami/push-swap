@@ -6,7 +6,7 @@
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 12:05:21 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/14 12:49:40 by hrami            ###   ########.fr       */
+/*   Updated: 2025/01/17 14:55:38 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,6 @@ void	min_move(t_stack *a, t_stack *b, t_calc *calc_list);
 t_calc	*calculate_indices(t_stack *stack_a, t_stack *stack_b);
 void	best_fun(t_stack *a, t_stack *b, t_calc *calc);
 t_calc	*find_min_move(t_calc *calc_list);
+void	free_calc_list(t_calc *calc_list);
 
 #endif

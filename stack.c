@@ -6,7 +6,7 @@
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 11:50:02 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/13 12:51:18 by hrami            ###   ########.fr       */
+/*   Updated: 2025/01/17 14:54:31 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,16 @@ int	is_empty(t_stack *stack)
 	if (stack->top == NULL)
 		return (1);
 	return (0);
+}
+
+void	free_calc_list(t_calc *calc_list)
+{
+	t_calc	*temp;
+
+	while (calc_list != NULL)
+	{
+		temp = calc_list->next;
+		free(calc_list);
+		calc_list = temp;
+	}
 }
