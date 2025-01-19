@@ -6,11 +6,11 @@
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 12:05:30 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/16 16:12:55 by hrami            ###   ########.fr       */
+/*   Updated: 2025/01/18 21:47:34 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 void	is_duplicate(t_stack *stack)
 {
@@ -27,7 +27,7 @@ void	is_duplicate(t_stack *stack)
 			{
 				free_stack(stack);
 				write(2, "Error\n", 6);
-				exit(0);
+				exit(1);
 			}
 			second = second->next;
 		}

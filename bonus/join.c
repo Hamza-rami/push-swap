@@ -6,11 +6,11 @@
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 12:05:42 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/15 13:15:54 by hrami            ###   ########.fr       */
+/*   Updated: 2025/01/18 21:48:12 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 static	char	*ft_strcpy(char *dest, char const *src)
 {
@@ -54,10 +54,10 @@ char	*ft_strdup(const char *src)
 
 size_t	ft_strlen(char const *str)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (str[i])
+	while(str[i])
 	{
 		i++;
 	}

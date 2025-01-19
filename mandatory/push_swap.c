@@ -6,7 +6,7 @@
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:54:07 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/17 15:14:56 by hrami            ###   ########.fr       */
+/*   Updated: 2025/01/18 15:47:22 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	main(int argc, char *argv[])
 	{
 		free_stack(stack_a);
 		free_stack(stack_b);
-		exit(0);
+		exit(1);
 	}
 	if (get_size(stack_a) <= 5)
 		handle_small_stacks(stack_a, stack_b, get_size(stack_a));
