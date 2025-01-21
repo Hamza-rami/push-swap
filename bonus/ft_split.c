@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/04 12:05:49 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/18 21:48:04 by hrami            ###   ########.fr       */
+/*   Created: 2025/01/20 12:29:28 by hrami             #+#    #+#             */
+/*   Updated: 2025/01/20 12:29:29 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ static	char	**extract_word(char const *s, char c, char **result)
 	return (result);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split_bonus(char const *s, char c)
 {
 	char	**result;
 

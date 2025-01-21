@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   join.c                                             :+:      :+:    :+:   */
+/*   join_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/04 12:05:42 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/18 21:48:12 by hrami            ###   ########.fr       */
+/*   Created: 2025/01/20 12:30:05 by hrami             #+#    #+#             */
+/*   Updated: 2025/01/20 13:03:08 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-static	char	*ft_strcpy(char *dest, char const *src)
+static	char	*ft_strcpy_bonus(char *dest, char const *src)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ static	char	*ft_strcpy(char *dest, char const *src)
 	return (dest);
 }
 
-char	*ft_strdup(const char *src)
+char	*ft_strdup_bonus(const char *src)
 {
 	int		i;
 	int		size;
@@ -52,19 +52,17 @@ char	*ft_strdup(const char *src)
 	return (str);
 }
 
-size_t	ft_strlen(char const *str)
+size_t	ft_strlen_bonus(char const *str)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while(str[i])
-	{
+	while (str[i])
 		i++;
-	}
 	return (i);
 }
 
-char	*ft_strjoin(char *s1, char const *s2)
+char	*ft_strjoin_bonus(char *s1, char const *s2)
 {
 	char	*arr;
 	int		i;
@@ -72,12 +70,12 @@ char	*ft_strjoin(char *s1, char const *s2)
 
 	if (s1 == NULL || s2 == NULL)
 		return (NULL);
-	i = ft_strlen(s1);
-	j = ft_strlen(s2);
+	i = ft_strlen_bonus(s1);
+	j = ft_strlen_bonus(s2);
 	arr = malloc(i + j + 1);
 	if (arr == NULL)
 		return (free(s1), NULL);
-	ft_strcpy(arr, s1);
+	ft_strcpy_bonus(arr, s1);
 	j = 0;
 	while (s2[j])
 	{
@@ -89,17 +87,17 @@ char	*ft_strjoin(char *s1, char const *s2)
 	return (arr);
 }
 
-char	*ft_join_arg(int argc, char *argv[])
+char	*ft_join_arg_bonus(int argc, char *argv[])
 {
 	char	*str;
 	int		i;
 
-	str = ft_strdup("");
+	str = ft_strdup_bonus("");
 	i = 1;
 	while (i < argc)
 	{
-		str = ft_strjoin(str, argv[i]);
-		str = ft_strjoin(str, " ");
+		str = ft_strjoin_bonus(str, argv[i]);
+		str = ft_strjoin_bonus(str, " ");
 		i++;
 	}
 	return (str);

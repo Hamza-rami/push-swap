@@ -6,7 +6,7 @@
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 12:05:42 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/18 16:32:16 by hrami            ###   ########.fr       */
+/*   Updated: 2025/01/20 10:37:03 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,11 @@ char	*ft_strdup(const char *src)
 }
 
 size_t	ft_strlen(char const *str)
-{ra
-ra
-ra
-ra
-pb
-pb
-pa
-ra
-pa
-rra
+{
+	size_t i;
+
+	i = 0;
+	while(str[i])
 	{
 		i++;
 	}

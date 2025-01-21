@@ -1,30 +1,45 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_add_back.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/20 12:29:12 by hrami             #+#    #+#             */
+/*   Updated: 2025/01/20 12:59:52 by hrami            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap_bonus.h"
 
-t_node_bonus    *ft_add_back_list(t_node_bonus **list, t_node_bonus *new_node)
+t_node_bonus	*ft_add_back_list(t_node_bonus **list, t_node_bonus *new_node)
 {
-    t_node_bonus *tmp;
+	t_node_bonus	*tmp;
 
-    if (!list || !new_node)
-	    return (NULL);
-    if (!*list)
-        *list = new_node;
-    else
-        tmp = *list;
-        while (tmp->next)
-            tmp = tmp->next;
-        tmp->next = new_node;
-    return (*list);
+	if (!list || !new_node)
+		return (NULL);
+	if (!*list)
+	{
+		*list = new_node;
+		return (*list);
+	}
+	tmp = *list;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new_node;
+	return (*list);
 }
-t_node_bonus *ft_lst_new(char *str)
-{
-    t_node_bonus *new_node;
 
-    new_node = malloc(sizeof(t_node_bonus));
-    if (!new_node)
-        return (NULL);
-    new_node->str = str;
-    new_node->next = NULL;
-    return (new_node);
+t_node_bonus	*ft_lst_new(char *str)
+{
+	t_node_bonus	*new_node;
+
+	new_node = malloc(sizeof(t_node_bonus));
+	if (!new_node)
+		return (NULL);
+	new_node->str = str;
+	new_node->next = NULL;
+	return (new_node);
 }
 
 int	ft_strcmp(char *s1, char *s2)
@@ -37,9 +52,9 @@ int	ft_strcmp(char *s1, char *s2)
 	return (s1[i] - s2[i]);
 }
 
-int	if_sorted(t_stack *stack)
+int	is_sorted(t_stack_bonus *stack)
 {
-	t_node	*current;
+	t_node_stack	*current;
 
 	if (!stack || !stack->top)
 		return (1);

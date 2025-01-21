@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parce.c                                            :+:      :+:    :+:   */
+/*   parce_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/04 12:05:30 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/18 21:47:34 by hrami            ###   ########.fr       */
+/*   Created: 2025/01/20 12:30:19 by hrami             #+#    #+#             */
+/*   Updated: 2025/01/20 13:00:58 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-void	is_duplicate(t_stack *stack)
+void	is_duplicate_bonus(t_stack_bonus *stack)
 {
-	t_node	*first;
-	t_node	*second;
+	t_node_stack	*first;
+	t_node_stack	*second;
 
 	first = stack->top;
 	while (first)
@@ -25,7 +25,7 @@ void	is_duplicate(t_stack *stack)
 		{
 			if (first->data == second->data)
 			{
-				free_stack(stack);
+				free_stack_bonus(stack);
 				write(2, "Error\n", 6);
 				exit(1);
 			}
@@ -35,10 +35,10 @@ void	is_duplicate(t_stack *stack)
 	}
 }
 
-void	free_stack(t_stack *stack)
+void	free_stack_bonus(t_stack_bonus *stack)
 {
-	t_node	*current;
-	t_node	*next;
+	t_node_stack	*current;
+	t_node_stack	*next;
 
 	current = stack->top;
 	while (current != NULL)
@@ -50,23 +50,23 @@ void	free_stack(t_stack *stack)
 	free(stack);
 }
 
-int	is_valid_number(char **split, t_stack *stack)
+static int	is_valid_number(char **split, t_stack_bonus *stack)
 {
 	int		i;
 
 	i = 0;
 	while (split[i])
 	{
-		add_back(stack, ft_atoi(split[i]));
+		add_back_bonus(stack, ft_atoi_bonus(split[i]));
 		free(split[i]);
 		i++;
 	}
 	free(split);
-	is_duplicate(stack);
+	is_duplicate_bonus(stack);
 	return (0);
 }
 
-void	check_isemty(char **argv)
+void	check_isemty_bonus(char **argv)
 {
 	int		i;
 	int		j;
@@ -91,14 +91,14 @@ void	check_isemty(char **argv)
 	}
 }
 
-void	parse_and_push(int argc, char *argv[], t_stack *stack)
+void	parse_and_push_bonus(int argc, char *argv[], t_stack_bonus *stack)
 {
 	char	*joined;
 	char	**split;
 
-	check_isemty(argv);
-	joined = ft_join_arg(argc, argv);
-	split = ft_split(joined, ' ');
+	check_isemty_bonus(argv);
+	joined = ft_join_arg_bonus(argc, argv);
+	split = ft_split_bonus(joined, ' ');
 	free(joined);
 	is_valid_number(split, stack);
 }

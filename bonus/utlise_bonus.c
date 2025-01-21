@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_pa.c                                          :+:      :+:    :+:   */
+/*   utlise_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/20 12:30:08 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/20 12:30:09 by hrami            ###   ########.fr       */
+/*   Created: 2025/01/20 12:30:27 by hrami             #+#    #+#             */
+/*   Updated: 2025/01/20 12:30:39 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-void	pa_bonus(t_stack_bonus *a, t_stack_bonus *b)
+void	add_back_bonus(t_stack_bonus *stack, int value)
 {
-	if (is_empty_bonus(b))
-		return ;
-	push_bonus(a, pop_bonus(b));
-}
+	t_node_stack	*temp;
+	t_node_stack	*new_node;
 
-void	pb_bonus(t_stack_bonus *b, t_stack_bonus *a)
-{
-	if (is_empty_bonus(a))
+	new_node = malloc(sizeof(t_node_stack));
+	if (!new_node)
 		return ;
-	push_bonus(b, pop_bonus(a));
+	new_node->data = value;
+	new_node->next = NULL;
+	if (!stack->top)
+	{
+		stack->top = new_node;
+		return ;
+	}
+	temp = stack->top;
+	while (temp->next)
+	{
+		temp = temp->next;
+	}
+	temp->next = new_node;
 }
