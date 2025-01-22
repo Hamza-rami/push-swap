@@ -6,7 +6,7 @@
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:28:59 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/20 15:23:00 by hrami            ###   ########.fr       */
+/*   Updated: 2025/01/21 09:53:14 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,16 @@ int	main(int argc, char *argv[])
 		line = get_next_line(0);
 	}
 	temp = list;
-	while (temp->next)
+	while (temp)
 	{
 		apply_move(temp->str, stack_a, stack_b);
 		temp = temp->next;
 	}
-	printf("%d", stack_a->top->data);
-	printf("\n%d\n", stack_a->top->next->data);
-	if (is_sorted(stack_a))
+	if (is_sorted(stack_a) && is_empty_bonus(stack_b))
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
-	// free_list(list);
+	free_list(list);
 	free_stack_bonus(stack_a);
 	free_stack_bonus(stack_b);
 	return (0);
