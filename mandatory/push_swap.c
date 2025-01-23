@@ -6,7 +6,7 @@
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:54:07 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/18 15:47:22 by hrami            ###   ########.fr       */
+/*   Updated: 2025/01/22 00:23:46 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,22 +60,22 @@ int	main(int argc, char *argv[])
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
-	stack_a = init_stack();
-	stack_b = init_stack();
+	stack_a = manage_a(1);
+	stack_b = manage_b(1);
 	if (!stack_a || !stack_b)
 		exit(1);
 	parse_and_push(argc, argv, stack_a);
 	if (if_sorted(stack_a))
 	{
-		free_stack(stack_a);
-		free_stack(stack_b);
+		manage_a(0);
+		manage_b(0);
 		exit(1);
 	}
 	if (get_size(stack_a) <= 5)
 		handle_small_stacks(stack_a, stack_b, get_size(stack_a));
 	else
 		sort_large_stack(stack_a, stack_b);
-	free_stack(stack_a);
-	free_stack(stack_b);
+	manage_a(0);
+	manage_b(0);
 	return (0);
 }

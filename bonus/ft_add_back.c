@@ -6,7 +6,7 @@
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:29:12 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/21 09:50:27 by hrami            ###   ########.fr       */
+/*   Updated: 2025/01/22 18:09:02 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,13 @@ int	is_sorted(t_stack_bonus *stack)
 
 void	free_list(t_node_bonus *list)
 {
-    t_node_bonus *temp;
+	t_node_bonus	*temp;
 
-    while (list)
-    {
-        temp = list->next;
-        free(list->str);
-        free(list);
-        list = temp;
-    }
+	while (list)
+	{
+		temp = list->next;
+		free(list->str);
+		free(list);
+		list = temp;
+	}
 }

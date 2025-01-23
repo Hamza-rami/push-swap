@@ -6,7 +6,7 @@
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:30:19 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/20 13:00:58 by hrami            ###   ########.fr       */
+/*   Updated: 2025/01/22 13:45:11 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	is_duplicate_bonus(t_stack_bonus *stack)
 		{
 			if (first->data == second->data)
 			{
-				free_stack_bonus(stack);
+				manage_a(0);
+				manage_b(0);
 				write(2, "Error\n", 6);
 				exit(1);
 			}
@@ -47,7 +48,6 @@ void	free_stack_bonus(t_stack_bonus *stack)
 		free(current);
 		current = next;
 	}
-	free(stack);
 }
 
 static int	is_valid_number(char **split, t_stack_bonus *stack)
@@ -57,11 +57,10 @@ static int	is_valid_number(char **split, t_stack_bonus *stack)
 	i = 0;
 	while (split[i])
 	{
-		add_back_bonus(stack, ft_atoi_bonus(split[i]));
-		free(split[i]);
+		add_back_bonus(stack, ft_atoi_bonus(split[i], split));
 		i++;
 	}
-	free(split);
+	free_split_bonus(split);
 	is_duplicate_bonus(stack);
 	return (0);
 }

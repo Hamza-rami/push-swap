@@ -6,7 +6,7 @@
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 12:05:42 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/20 10:37:03 by hrami            ###   ########.fr       */
+/*   Updated: 2025/01/22 11:10:11 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ char	*ft_strdup(const char *src)
 
 size_t	ft_strlen(char const *str)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
 	{
 		i++;
 	}
@@ -85,8 +85,7 @@ char	*ft_strjoin(char *s1, char const *s2)
 		j++;
 	}
 	arr[i + j] = '\0';
-	free(s1);
-	return (arr);
+	return (free(s1), arr);
 }
 
 char	*ft_join_arg(int argc, char *argv[])

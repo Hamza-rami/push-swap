@@ -1,8 +1,8 @@
 NAME = checker
 
-SRC = best_move.c ft_atoi.c ft_split.c if_sorted.c join.c lisub.c min_move.c pa.c \
-		parce.c part_stack.c pb.c ra.c rb.c rr.c rra.c rrb.c rrr.c sa.c sb.c smalle_stack.c \
-		ss.c stack.c push_swap.c
+SRC = apply_move.c check_move.c cheker.c ft_add_back.c ft_atoi.c ft_split.c \
+		get_next_line.c get_next_line_utils.c join_bonus.c move_pa.c move_rr.c \
+		move_rrr.c move_ss.c parce_bonus.c stack.c utlise_bonus.c holdStacks_bonus.c
 INC = push_swap_bonus.h
 OBJS = ${SRC:.c=.o}
 CC = cc -Wall -Werror -Wextra

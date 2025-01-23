@@ -6,7 +6,7 @@
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 12:05:30 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/18 12:24:08 by hrami            ###   ########.fr       */
+/*   Updated: 2025/01/22 11:07:35 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	is_duplicate(t_stack *stack)
 		{
 			if (first->data == second->data)
 			{
-				free_stack(stack);
+				manage_a(0);
+				manage_b(0);
 				write(2, "Error\n", 6);
 				exit(1);
 			}
@@ -37,31 +38,29 @@ void	is_duplicate(t_stack *stack)
 
 void	free_stack(t_stack *stack)
 {
-	t_node	*current;
 	t_node	*next;
 
-	current = stack->top;
-	while (current != NULL)
+	while (stack->top != NULL)
 	{
-		next = current->next;
-		free(current);
-		current = next;
+		next = stack->top->next;
+		free(stack->top);
+		stack->top = next;
 	}
-	free(stack);
 }
 
 int	is_valid_number(char **split, t_stack *stack)
 {
 	int		i;
+	int		value;
 
 	i = 0;
 	while (split[i])
 	{
-		add_back(stack, ft_atoi(split[i]));
-		free(split[i]);
+		value = ft_atoi(split[i], split);
+		add_back(stack, value);
 		i++;
 	}
-	free(split);
+	free_split(split);
 	is_duplicate(stack);
 	return (0);
 }

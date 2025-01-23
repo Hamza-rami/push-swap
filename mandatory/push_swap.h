@@ -6,7 +6,7 @@
 /*   By: hrami <hrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 12:05:21 by hrami             #+#    #+#             */
-/*   Updated: 2025/01/17 14:55:38 by hrami            ###   ########.fr       */
+/*   Updated: 2025/01/22 11:09:51 by hrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	rrr(t_stack *a, t_stack *b);
 void	ss(t_stack *a, t_stack *b);
 char	*ft_join_arg(int argc, char *argv[]);
 char	**ft_split(char const *s, char c);
-int		ft_atoi(char const *str);
+int		ft_atoi(char *str, char **split);
 void	parse_and_push(int argc, char *argv[], t_stack *stack);
 int		if_sorted(t_stack *stack);
 int		*ft_change(t_stack *stack, int size);
@@ -81,5 +81,8 @@ t_calc	*calculate_indices(t_stack *stack_a, t_stack *stack_b);
 void	best_fun(t_stack *a, t_stack *b, t_calc *calc);
 t_calc	*find_min_move(t_calc *calc_list);
 void	free_calc_list(t_calc *calc_list);
+void	free_split(char **split);
+t_stack	*manage_a(int check);
+t_stack	*manage_b(int check);
 
 #endif
